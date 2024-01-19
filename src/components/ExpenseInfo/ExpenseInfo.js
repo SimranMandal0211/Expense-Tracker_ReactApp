@@ -4,6 +4,10 @@ import styles from "./ExpenseInfo.module.css";
 const ExpenseInfo = ({ expenses }) => {
   let profitAmount = 0;
   let lossAmount = 0;
+
+  // const [state, dispatch] = useReducer(reducer, initiaState);
+  // reducer(state, action){}
+
   const grandTotal = expenses.reduce((acc, currentExpense) => {
     const currentExpenseAmount = parseInt(currentExpense.amount);
     if (currentExpenseAmount < 0) {

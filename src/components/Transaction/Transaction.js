@@ -3,13 +3,10 @@ import styles from "./Transaction.module.css";
 import EditImage from "../../images/edit.png";
 import DeleteImage from "../../images/trash-bin.png";
 
-const Transaction = ({
-  expense,
-  changeExpenseToUpdate,
-  deleteExpense,
-  index
-}) => {
-  const [currentHoverIndex, setCurrentHoverIndex] = useState(null);
+const Transaction = ({ expense, changeExpenseToUpdate, deleteExpense, index }) => {
+  const [currentHoverIndex, setCurrentHoverIndex] = useState(null); //index value
+  // console.log('current ', currentHoverIndex ); ----> prints index value of particulr expense from the list
+
   return (
     <li
       key={expense.id}
@@ -23,8 +20,11 @@ const Transaction = ({
         setCurrentHoverIndex(null);
       }}
     >
+      {/* text div */}
       <div>{expense.text}</div>
-      <div className={styles.transactionOptions}>
+
+      {/* amount div */}
+      <div className={styles.transactionOptions}> 
         <div
           className={`${styles.amount} ${
             currentHoverIndex === index && styles.movePrice
@@ -32,11 +32,15 @@ const Transaction = ({
         >
           ${expense.amount}
         </div>
+
+
+        {/* open this when we HOVER */}
         <div
           className={`${styles.btnContainer} ${
             currentHoverIndex === index && styles.active
           }`}
         >
+          {/* update icon */}
           <div
             className={styles.edit}
             onClick={() => {
@@ -45,6 +49,7 @@ const Transaction = ({
           >
             <img src={EditImage} height="100%" alt="Edit" />
           </div>
+          {/* delete icon */}
           <div
             className={styles.delete}
             onClick={() => deleteExpense(expense.id)}

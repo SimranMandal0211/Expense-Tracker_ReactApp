@@ -1,12 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./ExpenseForm.module.css";
 
-const ExpenseForm = ({
-  addExpense,
-  expenseToUpdate,
-  updateExpense,
-  resetExpenseToUpdate
-}) => {
+const ExpenseForm = ({ addExpense, expenseToUpdate, updateExpense, resetExpenseToUpdate }) => {
   const expenseTextInput = useRef();
   const expenseAmountInput = useRef();
 
@@ -23,6 +18,7 @@ const ExpenseForm = ({
     if (parseInt(expenseAmount) === 0) {
       return;
     }
+    // new expense - add 
     if (!expenseToUpdate) {
       const expense = {
         text: expenseText,
@@ -33,6 +29,7 @@ const ExpenseForm = ({
       return;
     }
 
+    // match with id - then update
     const expense = {
       text: expenseText,
       amount: expenseAmount,
